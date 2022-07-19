@@ -40,12 +40,25 @@ final class RequestHandler: RequestHandling {
 
     let urlSession: URLSession
 
+    private var previousTask: URLSessionDataTask?
+
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
 
     func request<T: Decodable>(route: APIRoute, completion: @escaping (Result<T, DataLoadError>) -> Void) {
+
+        if let previousTask = previousTask {
+            previousTask.cancel()
+        }
+
         let task = urlSession.dataTask(with: route.asRequest()) { (data, response, error) in
+
+            // Ignore if this request was cancelled
+            // This is to avoid firing multiple requests when user changes slider too fast
+            if (error as NSError?)?.code == NSURLErrorCancelled {
+               return
+            }
 
             if let error = error {
                 completion(.failure(.genericError(error.localizedDescription)))
@@ -71,6 +84,9 @@ final class RequestHandler: RequestHandling {
                 completion(.failure(.malformedContent))
             }
         }
+
         task.resume()
+
+        self.previousTask = task
     }
 }

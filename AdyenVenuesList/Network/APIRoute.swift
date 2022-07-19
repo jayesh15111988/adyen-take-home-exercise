@@ -32,7 +32,11 @@ enum APIRoute {
 
             var queryItems: [URLQueryItem] = []
 
-            queryItems.append(URLQueryItem(name: "ll", value: latitudeLongitudeParameter))
+            queryItems.append(contentsOf: [
+                URLQueryItem(name: "ll", value: latitudeLongitudeParameter),
+                // Default limit to 50 items in the list
+                URLQueryItem(name: "limit", value: String(50))
+            ])
 
             if radius != 0 {
                 queryItems.append(URLQueryItem(name: "radius", value: String(radius)))

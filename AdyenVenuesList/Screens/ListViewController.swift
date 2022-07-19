@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol ListViewable: AnyObject {
     func didFetchVenues(listScreenViewModel: ListScreenViewModel)
@@ -18,6 +19,7 @@ final class ListViewController: UIViewController, ListViewable {
         static let horizontalPadding: CGFloat = 8.0
         static let estimatedRowHeight: CGFloat = 44.0
         static let verticalPadding: CGFloat = 16.0
+        static let sliderStep: Float = 2
     }
 
     private var venuesViewModels: [VenueViewModel] = []
@@ -37,6 +39,13 @@ final class ListViewController: UIViewController, ListViewable {
         return label
     }()
 
+    private let sliderLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        return label
+    }()
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,10 +56,22 @@ final class ListViewController: UIViewController, ListViewable {
         return tableView
     }()
 
-    private let viewModel: ListViewModeling
+    private let sliderControl: UISlider = {
+        let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumValue = 2
+        slider.maximumValue = 30
+        slider.value = 2
+
+        return slider
+    }()
+
+    private let viewModel: ListViewModel
     private let alertDisplayUtility: AlertDisplayable
 
-    init(viewModel: ListViewModeling, alertDisplayUtility: AlertDisplayable = AlertDisplayUtility()) {
+    private var cancellables:Set<AnyCancellable> = []
+
+    init(viewModel: ListViewModel, alertDisplayUtility: AlertDisplayable = AlertDisplayUtility()) {
         self.viewModel = viewModel
         self.alertDisplayUtility = alertDisplayUtility
         super.init(nibName: nil, bundle: nil)
@@ -69,11 +90,22 @@ final class ListViewController: UIViewController, ListViewable {
 
     func setupViews() {
         view.backgroundColor = .white
+        view.addSubview(sliderLabel)
+        view.addSubview(sliderControl)
         view.addSubview(locationDetailsLabel)
         view.addSubview(tableView)
         view.addSubview(activityIndicatorView)
 
         self.title = "Venues"
+
+        viewModel.$radius.sink { _ in
+
+        } receiveValue: { [weak self] currentRadiusValue in
+            self?.sliderLabel.text = "Showing results in the radius of \(currentRadiusValue) KM"
+        }.store(in: &cancellables)
+
+
+        self.sliderControl.addTarget(self, action: #selector(sliderControlChanged), for: .valueChanged)
 
         tableView.dataSource = self
 
@@ -83,9 +115,21 @@ final class ListViewController: UIViewController, ListViewable {
     func layoutViews() {
 
         NSLayoutConstraint.activate([
+            sliderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
+            sliderLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
+            sliderLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        ])
+
+        NSLayoutConstraint.activate([
+            sliderControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
+            sliderControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
+            sliderControl.topAnchor.constraint(equalTo: sliderLabel.bottomAnchor, constant: Constants.verticalPadding),
+        ])
+
+        NSLayoutConstraint.activate([
             locationDetailsLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
             locationDetailsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
-            locationDetailsLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            locationDetailsLabel.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalPadding),
         ])
 
         NSLayoutConstraint.activate([
@@ -132,6 +176,13 @@ final class ListViewController: UIViewController, ListViewable {
 
     func showAlert(with title: String, message: String) {
         self.alertDisplayUtility.showAlert(with: title, message: message, actions: [], parentController: self)
+    }
+
+    @objc private func sliderControlChanged(sender: UISlider) {
+        let currentValue = round(sender.value / Constants.sliderStep) * Constants.sliderStep
+        viewModel.radius = currentValue
+        sender.value = currentValue
+        self.loadVenues()
     }
 }
 

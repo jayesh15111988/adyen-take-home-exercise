@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol ListViewModeling {
-    func fetchVenues()
-}
 
 enum LocationMode {
     case defaultLocation
@@ -42,13 +39,15 @@ struct CategoryViewModel {
     let name: String
 }
 
-final class ListViewModel: ListViewModeling {
+final class ListViewModel {
 
     weak var view: ListViewable?
 
     let requestHandler: RequestHandling
 
-    private var radius: Int = 0
+    @Published var radius: Float = 2
+
+    private var previousRadius: Float = 0
 
     var locationMode: LocationMode = .defaultLocation
 
@@ -61,7 +60,16 @@ final class ListViewModel: ListViewModeling {
     }
 
     func fetchVenues() {
-        requestHandler.request(route: .getVenuesList(radius: radius, latitude: latitude, longitude: longitude)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
+
+        // Prevent app from sending duplicate requests
+        guard radius != previousRadius else {
+            return
+        }
+        print("Sending request for \(radius)")
+
+        self.previousRadius = radius
+
+        requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, latitude: latitude, longitude: longitude)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
             guard let self = self else {
                 self?.view?.displayError(with: "Something went wrong. Please try again later")
                 return

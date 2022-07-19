@@ -83,6 +83,8 @@ final class ListCell: UITableViewCell {
         contentView.addSubview(categoryNameLabel)
         contentView.addSubview(showFullAddressButton)
 
+        selectionStyle = .none
+
         showFullAddressButton.addTarget(self, action: #selector(showFullAddressButtonPressed), for: .touchUpInside)
     }
 
