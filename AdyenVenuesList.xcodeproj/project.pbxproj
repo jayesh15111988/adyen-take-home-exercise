@@ -1,0 +1,697 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		910E72102885B3B40087B613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E720F2885B3B40087B613 /* AppDelegate.swift */; };
+		910E72122885B3B40087B613 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72112885B3B40087B613 /* SceneDelegate.swift */; };
+		910E72142885B3B40087B613 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72132885B3B40087B613 /* ViewController.swift */; };
+		910E72172885B3B40087B613 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910E72152885B3B40087B613 /* Main.storyboard */; };
+		910E72192885B3B50087B613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910E72182885B3B50087B613 /* Assets.xcassets */; };
+		910E721C2885B3B50087B613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910E721A2885B3B50087B613 /* LaunchScreen.storyboard */; };
+		910E72272885B3B60087B613 /* AdyenVenuesListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72262885B3B60087B613 /* AdyenVenuesListTests.swift */; };
+		910E72312885B3B60087B613 /* AdyenVenuesListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72302885B3B60087B613 /* AdyenVenuesListUITests.swift */; };
+		910E72332885B3B60087B613 /* AdyenVenuesListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72322885B3B60087B613 /* AdyenVenuesListUITestsLaunchTests.swift */; };
+		910E72422885B4810087B613 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72412885B4810087B613 /* ListViewController.swift */; };
+		910E72442885B4A00087B613 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72432885B4A00087B613 /* ListViewModel.swift */; };
+		910E72462885B4AE0087B613 /* APIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72452885B4AE0087B613 /* APIRoute.swift */; };
+		910E72482885B4BC0087B613 /* RequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72472885B4BC0087B613 /* RequestHandling.swift */; };
+		910E724A2885B4C80087B613 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72492885B4C80087B613 /* RequestHandler.swift */; };
+		910E724D2885B5480087B613 /* VenuesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E724C2885B5480087B613 /* VenuesList.swift */; };
+		910E72502885BC030087B613 /* AlertDisplayUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E724F2885BC030087B613 /* AlertDisplayUtility.swift */; };
+		910E72522885C3380087B613 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72512885C3380087B613 /* ListCell.swift */; };
+		910E72562885C5070087B613 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72552885C5070087B613 /* ReusableView.swift */; };
+		910E72592885DF9D0087B613 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72582885DF9D0087B613 /* Style.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		910E72232885B3B60087B613 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 910E72042885B3B30087B613 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 910E720B2885B3B40087B613;
+			remoteInfo = AdyenVenuesList;
+		};
+		910E722D2885B3B60087B613 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 910E72042885B3B30087B613 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 910E720B2885B3B40087B613;
+			remoteInfo = AdyenVenuesList;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		910E720C2885B3B40087B613 /* AdyenVenuesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdyenVenuesList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		910E720F2885B3B40087B613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		910E72112885B3B40087B613 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		910E72132885B3B40087B613 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		910E72162885B3B40087B613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		910E72182885B3B50087B613 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		910E721B2885B3B50087B613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		910E721D2885B3B50087B613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		910E72222885B3B60087B613 /* AdyenVenuesListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdyenVenuesListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		910E72262885B3B60087B613 /* AdyenVenuesListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenVenuesListTests.swift; sourceTree = "<group>"; };
+		910E722C2885B3B60087B613 /* AdyenVenuesListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdyenVenuesListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		910E72302885B3B60087B613 /* AdyenVenuesListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenVenuesListUITests.swift; sourceTree = "<group>"; };
+		910E72322885B3B60087B613 /* AdyenVenuesListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdyenVenuesListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		910E72412885B4810087B613 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		910E72432885B4A00087B613 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		910E72452885B4AE0087B613 /* APIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoute.swift; sourceTree = "<group>"; };
+		910E72472885B4BC0087B613 /* RequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandling.swift; sourceTree = "<group>"; };
+		910E72492885B4C80087B613 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		910E724C2885B5480087B613 /* VenuesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesList.swift; sourceTree = "<group>"; };
+		910E724F2885BC030087B613 /* AlertDisplayUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayUtility.swift; sourceTree = "<group>"; };
+		910E72512885C3380087B613 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		910E72552885C5070087B613 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		910E72582885DF9D0087B613 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		910E72092885B3B40087B613 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E721F2885B3B60087B613 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E72292885B3B60087B613 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		910E72032885B3B30087B613 = {
+			isa = PBXGroup;
+			children = (
+				910E720E2885B3B40087B613 /* AdyenVenuesList */,
+				910E72252885B3B60087B613 /* AdyenVenuesListTests */,
+				910E722F2885B3B60087B613 /* AdyenVenuesListUITests */,
+				910E720D2885B3B40087B613 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		910E720D2885B3B40087B613 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				910E720C2885B3B40087B613 /* AdyenVenuesList.app */,
+				910E72222885B3B60087B613 /* AdyenVenuesListTests.xctest */,
+				910E722C2885B3B60087B613 /* AdyenVenuesListUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		910E720E2885B3B40087B613 /* AdyenVenuesList */ = {
+			isa = PBXGroup;
+			children = (
+				910E72572885DF950087B613 /* Style */,
+				910E72542885C4F50087B613 /* Protocols */,
+				910E72532885C3DB0087B613 /* Cells */,
+				910E724E2885BBF80087B613 /* Utilities */,
+				910E724B2885B4FF0087B613 /* Models */,
+				910E72402885B4330087B613 /* Screens */,
+				910E723F2885B3C80087B613 /* Network */,
+				910E720F2885B3B40087B613 /* AppDelegate.swift */,
+				910E72112885B3B40087B613 /* SceneDelegate.swift */,
+				910E72132885B3B40087B613 /* ViewController.swift */,
+				910E72152885B3B40087B613 /* Main.storyboard */,
+				910E72182885B3B50087B613 /* Assets.xcassets */,
+				910E721A2885B3B50087B613 /* LaunchScreen.storyboard */,
+				910E721D2885B3B50087B613 /* Info.plist */,
+			);
+			path = AdyenVenuesList;
+			sourceTree = "<group>";
+		};
+		910E72252885B3B60087B613 /* AdyenVenuesListTests */ = {
+			isa = PBXGroup;
+			children = (
+				910E72262885B3B60087B613 /* AdyenVenuesListTests.swift */,
+			);
+			path = AdyenVenuesListTests;
+			sourceTree = "<group>";
+		};
+		910E722F2885B3B60087B613 /* AdyenVenuesListUITests */ = {
+			isa = PBXGroup;
+			children = (
+				910E72302885B3B60087B613 /* AdyenVenuesListUITests.swift */,
+				910E72322885B3B60087B613 /* AdyenVenuesListUITestsLaunchTests.swift */,
+			);
+			path = AdyenVenuesListUITests;
+			sourceTree = "<group>";
+		};
+		910E723F2885B3C80087B613 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				910E72452885B4AE0087B613 /* APIRoute.swift */,
+				910E72472885B4BC0087B613 /* RequestHandling.swift */,
+				910E72492885B4C80087B613 /* RequestHandler.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		910E72402885B4330087B613 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				910E72412885B4810087B613 /* ListViewController.swift */,
+				910E72432885B4A00087B613 /* ListViewModel.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		910E724B2885B4FF0087B613 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				910E724C2885B5480087B613 /* VenuesList.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		910E724E2885BBF80087B613 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				910E724F2885BC030087B613 /* AlertDisplayUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		910E72532885C3DB0087B613 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				910E72512885C3380087B613 /* ListCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		910E72542885C4F50087B613 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				910E72552885C5070087B613 /* ReusableView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		910E72572885DF950087B613 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				910E72582885DF9D0087B613 /* Style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		910E720B2885B3B40087B613 /* AdyenVenuesList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 910E72362885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesList" */;
+			buildPhases = (
+				910E72082885B3B40087B613 /* Sources */,
+				910E72092885B3B40087B613 /* Frameworks */,
+				910E720A2885B3B40087B613 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdyenVenuesList;
+			productName = AdyenVenuesList;
+			productReference = 910E720C2885B3B40087B613 /* AdyenVenuesList.app */;
+			productType = "com.apple.product-type.application";
+		};
+		910E72212885B3B60087B613 /* AdyenVenuesListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 910E72392885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesListTests" */;
+			buildPhases = (
+				910E721E2885B3B60087B613 /* Sources */,
+				910E721F2885B3B60087B613 /* Frameworks */,
+				910E72202885B3B60087B613 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				910E72242885B3B60087B613 /* PBXTargetDependency */,
+			);
+			name = AdyenVenuesListTests;
+			productName = AdyenVenuesListTests;
+			productReference = 910E72222885B3B60087B613 /* AdyenVenuesListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		910E722B2885B3B60087B613 /* AdyenVenuesListUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 910E723C2885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesListUITests" */;
+			buildPhases = (
+				910E72282885B3B60087B613 /* Sources */,
+				910E72292885B3B60087B613 /* Frameworks */,
+				910E722A2885B3B60087B613 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				910E722E2885B3B60087B613 /* PBXTargetDependency */,
+			);
+			name = AdyenVenuesListUITests;
+			productName = AdyenVenuesListUITests;
+			productReference = 910E722C2885B3B60087B613 /* AdyenVenuesListUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		910E72042885B3B30087B613 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					910E720B2885B3B40087B613 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					910E72212885B3B60087B613 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 910E720B2885B3B40087B613;
+					};
+					910E722B2885B3B60087B613 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 910E720B2885B3B40087B613;
+					};
+				};
+			};
+			buildConfigurationList = 910E72072885B3B30087B613 /* Build configuration list for PBXProject "AdyenVenuesList" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 910E72032885B3B30087B613;
+			productRefGroup = 910E720D2885B3B40087B613 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				910E720B2885B3B40087B613 /* AdyenVenuesList */,
+				910E72212885B3B60087B613 /* AdyenVenuesListTests */,
+				910E722B2885B3B60087B613 /* AdyenVenuesListUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		910E720A2885B3B40087B613 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				910E721C2885B3B50087B613 /* LaunchScreen.storyboard in Resources */,
+				910E72192885B3B50087B613 /* Assets.xcassets in Resources */,
+				910E72172885B3B40087B613 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E72202885B3B60087B613 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E722A2885B3B60087B613 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		910E72082885B3B40087B613 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				910E72442885B4A00087B613 /* ListViewModel.swift in Sources */,
+				910E72142885B3B40087B613 /* ViewController.swift in Sources */,
+				910E72102885B3B40087B613 /* AppDelegate.swift in Sources */,
+				910E72562885C5070087B613 /* ReusableView.swift in Sources */,
+				910E72422885B4810087B613 /* ListViewController.swift in Sources */,
+				910E72592885DF9D0087B613 /* Style.swift in Sources */,
+				910E724D2885B5480087B613 /* VenuesList.swift in Sources */,
+				910E72462885B4AE0087B613 /* APIRoute.swift in Sources */,
+				910E72522885C3380087B613 /* ListCell.swift in Sources */,
+				910E72502885BC030087B613 /* AlertDisplayUtility.swift in Sources */,
+				910E72482885B4BC0087B613 /* RequestHandling.swift in Sources */,
+				910E724A2885B4C80087B613 /* RequestHandler.swift in Sources */,
+				910E72122885B3B40087B613 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E721E2885B3B60087B613 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				910E72272885B3B60087B613 /* AdyenVenuesListTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910E72282885B3B60087B613 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				910E72332885B3B60087B613 /* AdyenVenuesListUITestsLaunchTests.swift in Sources */,
+				910E72312885B3B60087B613 /* AdyenVenuesListUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		910E72242885B3B60087B613 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 910E720B2885B3B40087B613 /* AdyenVenuesList */;
+			targetProxy = 910E72232885B3B60087B613 /* PBXContainerItemProxy */;
+		};
+		910E722E2885B3B60087B613 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 910E720B2885B3B40087B613 /* AdyenVenuesList */;
+			targetProxy = 910E722D2885B3B60087B613 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		910E72152885B3B40087B613 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				910E72162885B3B40087B613 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		910E721A2885B3B50087B613 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				910E721B2885B3B50087B613 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		910E72342885B3B60087B613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		910E72352885B3B60087B613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		910E72372885B3B60087B613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdyenVenuesList/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		910E72382885B3B60087B613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AdyenVenuesList/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		910E723A2885B3B60087B613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdyenVenuesList.app/AdyenVenuesList";
+			};
+			name = Debug;
+		};
+		910E723B2885B3B60087B613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesListTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdyenVenuesList.app/AdyenVenuesList";
+			};
+			name = Release;
+		};
+		910E723D2885B3B60087B613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AdyenVenuesList;
+			};
+			name = Debug;
+		};
+		910E723E2885B3B60087B613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ABC.AdyenVenuesListUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AdyenVenuesList;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		910E72072885B3B30087B613 /* Build configuration list for PBXProject "AdyenVenuesList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				910E72342885B3B60087B613 /* Debug */,
+				910E72352885B3B60087B613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		910E72362885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				910E72372885B3B60087B613 /* Debug */,
+				910E72382885B3B60087B613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		910E72392885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				910E723A2885B3B60087B613 /* Debug */,
+				910E723B2885B3B60087B613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		910E723C2885B3B60087B613 /* Build configuration list for PBXNativeTarget "AdyenVenuesListUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				910E723D2885B3B60087B613 /* Debug */,
+				910E723E2885B3B60087B613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 910E72042885B3B30087B613 /* Project object */;
+}
