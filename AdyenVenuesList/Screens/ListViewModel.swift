@@ -6,18 +6,29 @@
 //
 
 import Foundation
-
+import CoreLocation
 
 enum LocationMode {
-    case defaultLocation
-    case currentLocation
+    case defaultLocation(latitude: Double, longitude: Double)
+    case currentLocation(latitude: Double, longitude: Double)
 
     var locationDescription: String {
+        let location: String
         switch self {
         case .defaultLocation:
-            return "Cupertino"
+            location = "Cupertino"
         case .currentLocation:
-            return "Current Location"
+            location = "Current Location"
+        }
+        return "Showing results for \(location)"
+    }
+
+    var toggleModeDescription: String {
+        switch self {
+        case .defaultLocation:
+            return "Search Venues in Current Location"
+        case .currentLocation:
+            return "Search Venues at Cupertino"
         }
     }
 }
@@ -32,7 +43,6 @@ struct VenueViewModel {
 
 struct ListScreenViewModel {
     let venues: [VenueViewModel]
-    let locationDescription: String
 }
 
 struct CategoryViewModel {
@@ -47,16 +57,28 @@ final class ListViewModel {
 
     @Published var radius: Float = 2
 
-    private var previousRadius: Float = 0
+    @Published var locationMode: LocationMode
 
-    var locationMode: LocationMode = .defaultLocation
+    private var previousRadius: Float = 0
 
     // Default latitude and longitude - Belong to Apple headquarter
     private var latitude: Double = 37.32
     private var longitude: Double = -122.03
 
+    var locationManager: CLLocationManager?
+
     init(requestHandler: RequestHandling) {
         self.requestHandler = requestHandler
+        self.locationMode = .defaultLocation(latitude: latitude, longitude: longitude)
+    }
+
+    func toggleLocationMode() {
+        switch locationMode {
+        case .defaultLocation:
+            locationMode = .currentLocation(latitude: 20, longitude: 20)
+        case .currentLocation:
+            locationMode = .defaultLocation(latitude: latitude, longitude: longitude)
+        }
     }
 
     func fetchVenues() {
@@ -65,7 +87,6 @@ final class ListViewModel {
         guard radius != previousRadius else {
             return
         }
-        print("Sending request for \(radius)")
 
         self.previousRadius = radius
 
@@ -108,7 +129,6 @@ final class ListViewModel {
             return VenueViewModel(locationName: venue.name, distance: distanceValue, category: categoryViewModel, formattedAddress: venue.location.formattedAddress, neighborhoods: neighborhoods)
         }
 
-        let locationDescription = "Showing results for \(locationMode.locationDescription)"
-        return ListScreenViewModel(venues: venueViewModels, locationDescription: locationDescription)
+        return ListScreenViewModel(venues: venueViewModels)
     }
 }

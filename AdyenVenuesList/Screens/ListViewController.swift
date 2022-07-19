@@ -66,6 +66,17 @@ final class ListViewController: UIViewController, ListViewable {
         return slider
     }()
 
+    private let searchVenusAtLocationButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = Style.CornerRadius.default.rawValue
+        button.clipsToBounds = true
+        button.backgroundColor = .blue
+
+        return button
+    }()
+
     private let viewModel: ListViewModel
     private let alertDisplayUtility: AlertDisplayable
 
@@ -95,6 +106,9 @@ final class ListViewController: UIViewController, ListViewable {
         view.addSubview(locationDetailsLabel)
         view.addSubview(tableView)
         view.addSubview(activityIndicatorView)
+        view.addSubview(searchVenusAtLocationButton)
+
+        searchVenusAtLocationButton.addTarget(self, action: #selector(searchVenues), for: .touchUpInside)
 
         self.title = "Venues"
 
@@ -104,12 +118,23 @@ final class ListViewController: UIViewController, ListViewable {
             self?.sliderLabel.text = "Showing results in the radius of \(currentRadiusValue) KM"
         }.store(in: &cancellables)
 
+        viewModel.$locationMode.sink { _ in
+
+        } receiveValue: { [weak self] currentLocationMode in
+            self?.locationDetailsLabel.text = currentLocationMode.locationDescription
+            self?.searchVenusAtLocationButton.setTitle(currentLocationMode.toggleModeDescription, for: .normal)
+        }.store(in: &cancellables)
 
         self.sliderControl.addTarget(self, action: #selector(sliderControlChanged), for: .valueChanged)
 
         tableView.dataSource = self
 
         tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.reuseIdentifier)
+    }
+
+    @objc func searchVenues() {
+        viewModel.toggleLocationMode()
+        loadVenues()
     }
 
     func layoutViews() {
@@ -133,10 +158,16 @@ final class ListViewController: UIViewController, ListViewable {
         ])
 
         NSLayoutConstraint.activate([
+            searchVenusAtLocationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
+            searchVenusAtLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
+            searchVenusAtLocationButton.topAnchor.constraint(equalTo: locationDetailsLabel.bottomAnchor, constant: Constants.verticalPadding),
+        ])
+
+        NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: locationDetailsLabel.bottomAnchor, constant: Constants.verticalPadding),
+            tableView.topAnchor.constraint(equalTo: searchVenusAtLocationButton.bottomAnchor, constant: Constants.verticalPadding),
         ])
 
         NSLayoutConstraint.activate([
@@ -152,7 +183,6 @@ final class ListViewController: UIViewController, ListViewable {
 
     func didFetchVenues(listScreenViewModel: ListScreenViewModel) {
         DispatchQueue.main.async {
-            self.locationDetailsLabel.text = listScreenViewModel.locationDescription
             self.activityIndicatorView.stopAnimating()
             self.venuesViewModels = listScreenViewModel.venues
             self.tableView.reloadData()

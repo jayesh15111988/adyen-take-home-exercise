@@ -12,5 +12,9 @@ enum Style {
         static let regular = UIFont.systemFont(ofSize: 14)
         static let medium = UIFont.systemFont(ofSize: 16)
     }
+
+    enum CornerRadius: CGFloat {
+        case `default` = 16.0
+    }
 }
 

@@ -18,7 +18,6 @@ final class ListCell: UITableViewCell {
         static let verticalSpacing: CGFloat = 8.0
         static let imageHeight: CGFloat = 32.0
         static let imageWidth: CGFloat = 32.0
-        static let showFullAddressButtonCornerRadius: CGFloat = 16.0
     }
 
     private let nameLabel: UILabel = {
@@ -59,7 +58,7 @@ final class ListCell: UITableViewCell {
         button.setTitle("Show Full Address", for: .normal)
         button.setTitleColor(.black, for: .normal)
 
-        button.layer.cornerRadius = Constants.showFullAddressButtonCornerRadius
+        button.layer.cornerRadius = Style.CornerRadius.default.rawValue
         button.clipsToBounds = true
         button.backgroundColor = .lightGray
 
