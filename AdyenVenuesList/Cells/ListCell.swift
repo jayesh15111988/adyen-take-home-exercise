@@ -24,7 +24,7 @@ final class ListCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = Style.Fonts.medium
+        label.font = Style.Fonts.large
         return label
     }()
 
@@ -82,6 +82,8 @@ final class ListCell: UITableViewCell {
         contentView.addSubview(categoryNameLabel)
         contentView.addSubview(showFullAddressButton)
 
+        showFullAddressButton.contentEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
+
         selectionStyle = .none
 
         showFullAddressButton.addTarget(self, action: #selector(showFullAddressButtonPressed), for: .touchUpInside)
@@ -120,8 +122,8 @@ final class ListCell: UITableViewCell {
         NSLayoutConstraint.activate([
             showFullAddressButton.topAnchor.constraint(equalTo: categoryNameLabel.bottomAnchor, constant: Constants.verticalSpacing),
             showFullAddressButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalPadding),
-            showFullAddressButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalPadding),
-            showFullAddressButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.verticalPadding),
+            showFullAddressButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -Constants.horizontalPadding),
+            showFullAddressButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.verticalPadding)
         ])
     }
 

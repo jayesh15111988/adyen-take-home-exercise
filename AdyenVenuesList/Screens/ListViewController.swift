@@ -22,6 +22,7 @@ final class ListViewController: UIViewController, ListViewable {
         static let horizontalPadding: CGFloat = 8.0
         static let estimatedRowHeight: CGFloat = 44.0
         static let verticalPadding: CGFloat = 16.0
+        static let verticalSpacing: CGFloat = 8.0
         static let sliderStep: Float = 2
         static let sliderMinimumValue: Float = 2
         static let sliderMaximumValue: Float = 30
@@ -71,12 +72,18 @@ final class ListViewController: UIViewController, ListViewable {
         button.layer.cornerRadius = Style.CornerRadius.default.rawValue
         button.clipsToBounds = true
         button.backgroundColor = .blue
-
         return button
+    }()
+
+    private let searchVenusAtCurrentLocationButtonContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private let viewModel: ListViewModel
     private let alertDisplayUtility: AlertDisplayable
+    private var searchVenusAtCurrentLocationContainerHeightConstraint: NSLayoutConstraint?
 
     private var cancellables:Set<AnyCancellable> = []
 
@@ -102,7 +109,10 @@ final class ListViewController: UIViewController, ListViewable {
         view.addSubview(sliderControl)
         view.addSubview(tableView)
         view.addSubview(activityIndicatorView)
-        view.addSubview(searchVenusAtCurrentLocationButton)
+        view.addSubview(searchVenusAtCurrentLocationButtonContainer)
+        searchVenusAtCurrentLocationButtonContainer.addSubview(searchVenusAtCurrentLocationButton)
+
+        searchVenusAtCurrentLocationButtonContainer.clipsToBounds = true
 
         searchVenusAtCurrentLocationButton.addTarget(self, action: #selector(searchVenuesAtCurrentLocation), for: .touchUpInside)
 
@@ -121,6 +131,13 @@ final class ListViewController: UIViewController, ListViewable {
         tableView.dataSource = self
 
         tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.reuseIdentifier)
+
+        // Toggle visibility of button responsible for showing venues at the current location
+        viewModel.$previousLocationMode.combineLatest(viewModel.$locationMode).receive(on: DispatchQueue.main).sink { _ in
+            //no-op
+        } receiveValue: { [weak self] previousLocationMode, currentLocationMode in
+            self?.toggleSearchVenuesAtCurrentLocationButtonVisibility(previousLocationMode != currentLocationMode || currentLocationMode == .undetermined)
+        }.store(in: &cancellables)
     }
 
     @objc func searchVenuesAtCurrentLocation() {
@@ -142,10 +159,30 @@ final class ListViewController: UIViewController, ListViewable {
         ])
 
         NSLayoutConstraint.activate([
-            searchVenusAtCurrentLocationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
-            searchVenusAtCurrentLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
-            searchVenusAtCurrentLocationButton.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalPadding),
+            searchVenusAtCurrentLocationButtonContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchVenusAtCurrentLocationButtonContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            searchVenusAtCurrentLocationButtonContainer.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalSpacing)
         ])
+
+        searchVenusAtCurrentLocationContainerHeightConstraint = searchVenusAtCurrentLocationButtonContainer.heightAnchor.constraint(equalToConstant: 0)
+        searchVenusAtCurrentLocationContainerHeightConstraint?.isActive = false
+
+        let horizontalPaddingConstraints = [
+            searchVenusAtCurrentLocationButton.leadingAnchor.constraint(equalTo: searchVenusAtCurrentLocationButtonContainer.leadingAnchor, constant: Constants.horizontalPadding),
+            searchVenusAtCurrentLocationButton.trailingAnchor.constraint(equalTo: searchVenusAtCurrentLocationButtonContainer.trailingAnchor, constant: -Constants.horizontalPadding)
+        ]
+
+        let verticalPaddingConstraints = [
+            searchVenusAtCurrentLocationButton.topAnchor.constraint(equalTo: searchVenusAtCurrentLocationButtonContainer.topAnchor, constant: Constants.verticalPadding),
+            searchVenusAtCurrentLocationButton.bottomAnchor.constraint(equalTo: searchVenusAtCurrentLocationButtonContainer.bottomAnchor, constant: -Constants.verticalPadding),
+        ]
+
+        verticalPaddingConstraints.forEach {
+            $0.priority = .defaultLow
+        }
+
+        NSLayoutConstraint.activate(horizontalPaddingConstraints)
+        NSLayoutConstraint.activate(verticalPaddingConstraints)
 
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -170,6 +207,10 @@ final class ListViewController: UIViewController, ListViewable {
             self.venuesViewModels = listScreenViewModel.venues
             self.tableView.reloadData()
         }
+    }
+
+    func toggleSearchVenuesAtCurrentLocationButtonVisibility(_ toShow: Bool) {
+        self.searchVenusAtCurrentLocationContainerHeightConstraint?.isActive = !toShow
     }
 
     func displayError(with message: String, showRetryButton: Bool) {

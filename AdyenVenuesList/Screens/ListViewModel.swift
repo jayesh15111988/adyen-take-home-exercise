@@ -56,7 +56,7 @@ final class ListViewModel: NSObject {
     private var retryEnabled = false
 
     private var previousRadius: Float = 0
-    private var previousLocationMode: LocationMode = .undetermined
+    @Published var previousLocationMode: LocationMode = .undetermined
 
     private enum Constants {
         static let distanceFilter: CGFloat = 100.0
@@ -135,8 +135,6 @@ final class ListViewModel: NSObject {
 
         self.retryEnabled = false
         self.view?.startAnimating()
-        self.previousRadius = radius
-        self.previousLocationMode = locationMode
 
         requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, locationMode: locationMode)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
             guard let self = self else {
@@ -146,6 +144,8 @@ final class ListViewModel: NSObject {
 
             switch result {
             case .success(let response):
+                self.previousRadius = self.radius
+                self.previousLocationMode = self.locationMode
                 self.view?.didFetchVenues(listScreenViewModel: self.getListScreenViewModel(from: response.results))
             case .failure(let dataLoadError):
                 self.retryEnabled = true
