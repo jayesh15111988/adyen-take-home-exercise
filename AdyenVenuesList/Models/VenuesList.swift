@@ -35,10 +35,12 @@ struct Venue: Decodable {
     }
 }
 
+// It wasn't really clear from API documentation which fields are optional
+// And which not, so had to do trial and error to find about fields nullability
 struct Location: Decodable {
     let formattedAddress: String
-    let locality: String
-    let region: String
+    let locality: String?
+    let region: String?
     let neighborhood: [String]?
 }
 

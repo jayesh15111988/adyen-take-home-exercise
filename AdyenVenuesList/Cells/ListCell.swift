@@ -13,7 +13,7 @@ final class ListCell: UITableViewCell {
 
     private enum Constants {
         static let horizontalPadding: CGFloat = 8.0
-        static let verticalPadding: CGFloat = 8.0
+        static let verticalPadding: CGFloat = 16.0
         static let horizontalSpacing: CGFloat = 8.0
         static let verticalSpacing: CGFloat = 8.0
         static let imageHeight: CGFloat = 32.0
@@ -75,7 +75,7 @@ final class ListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setupViews() {
+    private func setupViews() {
         contentView.addSubview(nameLabel)
         contentView.addSubview(distanceLabel)
         contentView.addSubview(neighborhoodsLabel)
@@ -91,7 +91,7 @@ final class ListCell: UITableViewCell {
         showFullAddressButtonPressedClosure?()
     }
 
-    func layoutViews() {
+    private func layoutViews() {
 
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.verticalPadding),
@@ -100,7 +100,7 @@ final class ListCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            distanceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.verticalPadding),
+            distanceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Constants.verticalSpacing),
             distanceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalPadding),
             distanceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalSpacing)
         ])

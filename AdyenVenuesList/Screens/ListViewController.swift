@@ -10,7 +10,10 @@ import Combine
 
 protocol ListViewable: AnyObject {
     func didFetchVenues(listScreenViewModel: ListScreenViewModel)
-    func displayError(with message: String)
+    func displayError(with message: String, showRetryButton: Bool)
+    func showAlert(with title: String, message: String)
+    func startAnimating()
+    func stopAnimating()
 }
 
 final class ListViewController: UIViewController, ListViewable {
@@ -20,6 +23,9 @@ final class ListViewController: UIViewController, ListViewable {
         static let estimatedRowHeight: CGFloat = 44.0
         static let verticalPadding: CGFloat = 16.0
         static let sliderStep: Float = 2
+        static let sliderMinimumValue: Float = 2
+        static let sliderMaximumValue: Float = 30
+        static let sliderDefaultValue: Float = 2
     }
 
     private var venuesViewModels: [VenueViewModel] = []
@@ -30,13 +36,6 @@ final class ListViewController: UIViewController, ListViewable {
         activityIndicatorView.style = .large
         activityIndicatorView.color = .darkGray
         return activityIndicatorView
-    }()
-
-    private let locationDetailsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
     }()
 
     private let sliderLabel: UILabel = {
@@ -59,14 +58,13 @@ final class ListViewController: UIViewController, ListViewable {
     private let sliderControl: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
-        slider.minimumValue = 2
-        slider.maximumValue = 30
-        slider.value = 2
-
+        slider.minimumValue = Constants.sliderMinimumValue
+        slider.maximumValue = Constants.sliderMaximumValue
+        slider.value = Constants.sliderDefaultValue
         return slider
     }()
 
-    private let searchVenusAtLocationButton: UIButton = {
+    private let searchVenusAtCurrentLocationButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
@@ -96,33 +94,26 @@ final class ListViewController: UIViewController, ListViewable {
         super.viewDidLoad()
         setupViews()
         layoutViews()
-        loadVenues()
     }
 
-    func setupViews() {
+    private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(sliderLabel)
         view.addSubview(sliderControl)
-        view.addSubview(locationDetailsLabel)
         view.addSubview(tableView)
         view.addSubview(activityIndicatorView)
-        view.addSubview(searchVenusAtLocationButton)
+        view.addSubview(searchVenusAtCurrentLocationButton)
 
-        searchVenusAtLocationButton.addTarget(self, action: #selector(searchVenues), for: .touchUpInside)
+        searchVenusAtCurrentLocationButton.addTarget(self, action: #selector(searchVenuesAtCurrentLocation), for: .touchUpInside)
 
         self.title = "Venues"
 
+        self.searchVenusAtCurrentLocationButton.setTitle("Search Venues at Current Location", for: .normal)
+
         viewModel.$radius.sink { _ in
-
+            //no-op
         } receiveValue: { [weak self] currentRadiusValue in
-            self?.sliderLabel.text = "Showing results in the radius of \(currentRadiusValue) KM"
-        }.store(in: &cancellables)
-
-        viewModel.$locationMode.sink { _ in
-
-        } receiveValue: { [weak self] currentLocationMode in
-            self?.locationDetailsLabel.text = currentLocationMode.locationDescription
-            self?.searchVenusAtLocationButton.setTitle(currentLocationMode.toggleModeDescription, for: .normal)
+            self?.sliderLabel.text = "Searching venues in the radius of \(currentRadiusValue) KM"
         }.store(in: &cancellables)
 
         self.sliderControl.addTarget(self, action: #selector(sliderControlChanged), for: .valueChanged)
@@ -132,12 +123,11 @@ final class ListViewController: UIViewController, ListViewable {
         tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.reuseIdentifier)
     }
 
-    @objc func searchVenues() {
-        viewModel.toggleLocationMode()
+    @objc func searchVenuesAtCurrentLocation() {
         loadVenues()
     }
 
-    func layoutViews() {
+    private func layoutViews() {
 
         NSLayoutConstraint.activate([
             sliderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
@@ -152,22 +142,16 @@ final class ListViewController: UIViewController, ListViewable {
         ])
 
         NSLayoutConstraint.activate([
-            locationDetailsLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
-            locationDetailsLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
-            locationDetailsLabel.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalPadding),
-        ])
-
-        NSLayoutConstraint.activate([
-            searchVenusAtLocationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
-            searchVenusAtLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
-            searchVenusAtLocationButton.topAnchor.constraint(equalTo: locationDetailsLabel.bottomAnchor, constant: Constants.verticalPadding),
+            searchVenusAtCurrentLocationButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
+            searchVenusAtCurrentLocationButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
+            searchVenusAtCurrentLocationButton.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalPadding),
         ])
 
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tableView.topAnchor.constraint(equalTo: searchVenusAtLocationButton.bottomAnchor, constant: Constants.verticalPadding),
+            tableView.topAnchor.constraint(equalTo: searchVenusAtCurrentLocationButton.bottomAnchor, constant: Constants.verticalPadding),
         ])
 
         NSLayoutConstraint.activate([
@@ -176,9 +160,8 @@ final class ListViewController: UIViewController, ListViewable {
         ])
     }
 
-    func loadVenues() {
-        activityIndicatorView.startAnimating()
-        viewModel.fetchVenues()
+    private func loadVenues() {
+        viewModel.requestVenuesAtCurrentLocation()
     }
 
     func didFetchVenues(listScreenViewModel: ListScreenViewModel) {
@@ -189,18 +172,25 @@ final class ListViewController: UIViewController, ListViewable {
         }
     }
 
-    func displayError(with message: String) {
+    func displayError(with message: String, showRetryButton: Bool) {
 
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
 
-            let reloadDataAction = UIAlertAction(title: "Try Again", style: .default) { action in
-                self.loadVenues()
+            let reloadDataAction: UIAlertAction?
+
+            if showRetryButton {
+                reloadDataAction = UIAlertAction(title: "Try Again", style: .default) { action in
+                    self.loadVenues()
+                }
+            } else {
+                reloadDataAction = nil
             }
+
 
             let ignoreAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 
-            self.alertDisplayUtility.showAlert(with: "Error", message: message, actions: [ignoreAction, reloadDataAction], parentController: self)
+            self.alertDisplayUtility.showAlert(with: "Error", message: message, actions: [ignoreAction, reloadDataAction].compactMap { $0 }, parentController: self)
         }
     }
 
@@ -208,7 +198,17 @@ final class ListViewController: UIViewController, ListViewable {
         self.alertDisplayUtility.showAlert(with: title, message: message, actions: [], parentController: self)
     }
 
+    func startAnimating() {
+        self.activityIndicatorView.startAnimating()
+    }
+
+    func stopAnimating() {
+        self.activityIndicatorView.stopAnimating()
+    }
+
     @objc private func sliderControlChanged(sender: UISlider) {
+
+        // A logic to change slider value in steps
         let currentValue = round(sender.value / Constants.sliderStep) * Constants.sliderStep
         viewModel.radius = currentValue
         sender.value = currentValue
@@ -216,7 +216,7 @@ final class ListViewController: UIViewController, ListViewable {
     }
 }
 
-// MARK: Table view data source and delegates
+// MARK: Table view data source
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

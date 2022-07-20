@@ -33,9 +33,6 @@ enum DataLoadError: Error {
     }
 }
 
-/// This is RequestHandling implementation returns a hardcoded list of Species.
-///
-/// This is to be replaced by a proper implementation that actually makes the network call given the APIRoute, parses the response, and returns the resulting object.
 final class RequestHandler: RequestHandling {
 
     let urlSession: URLSession

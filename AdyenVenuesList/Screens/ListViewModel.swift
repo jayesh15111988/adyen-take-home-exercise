@@ -6,30 +6,24 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
 
 enum LocationMode {
-    case defaultLocation(latitude: Double, longitude: Double)
-    case currentLocation(latitude: Double, longitude: Double)
 
-    var locationDescription: String {
+    case undetermined
+    case requestMade
+    case currentLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+
+    var locationDescription: String? {
         let location: String
         switch self {
-        case .defaultLocation:
-            location = "Cupertino"
         case .currentLocation:
             location = "Current Location"
+        case .undetermined, .requestMade:
+            return nil
         }
         return "Showing results for \(location)"
-    }
-
-    var toggleModeDescription: String {
-        switch self {
-        case .defaultLocation:
-            return "Search Venues in Current Location"
-        case .currentLocation:
-            return "Search Venues at Cupertino"
-        }
     }
 }
 
@@ -49,9 +43,9 @@ struct CategoryViewModel {
     let name: String
 }
 
-final class ListViewModel {
+final class ListViewModel: NSObject {
 
-    weak var view: ListViewable?
+    weak var view: (ListViewable & UIViewController)?
 
     let requestHandler: RequestHandling
 
@@ -59,40 +53,94 @@ final class ListViewModel {
 
     @Published var locationMode: LocationMode
 
-    private var previousRadius: Float = 0
+    private var retryEnabled = false
 
-    // Default latitude and longitude - Belong to Apple headquarter
-    private var latitude: Double = 37.32
-    private var longitude: Double = -122.03
+    private var previousRadius: Float = 0
+    private var previousLocationMode: LocationMode = .undetermined
+
+    private enum Constants {
+        static let distanceFilter: CGFloat = 100.0
+    }
 
     var locationManager: CLLocationManager?
 
-    init(requestHandler: RequestHandling) {
+    private let alertDisplayUtility: AlertDisplayable
+
+    init(requestHandler: RequestHandling, alertDisplayUtility: AlertDisplayable = AlertDisplayUtility()) {
         self.requestHandler = requestHandler
-        self.locationMode = .defaultLocation(latitude: latitude, longitude: longitude)
+        self.alertDisplayUtility = alertDisplayUtility
+        self.locationMode = .undetermined
     }
 
-    func toggleLocationMode() {
-        switch locationMode {
-        case .defaultLocation:
-            locationMode = .currentLocation(latitude: 20, longitude: 20)
-        case .currentLocation:
-            locationMode = .defaultLocation(latitude: latitude, longitude: longitude)
+    private func fetchCurrentLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            if locationManager == nil {
+                self.locationManager = CLLocationManager()
+                self.locationManager?.distanceFilter = Constants.distanceFilter
+                self.locationManager?.delegate = self
+            }
+        } else {
+            self.retryEnabled = false
+            view?.displayError(with: "No location service enabled. Please enable the location service to view weather at the current location", showRetryButton: self.retryEnabled)
         }
+
+        switch locationManager?.authorizationStatus {
+        case .authorizedWhenInUse:
+            self.locationManager?.startUpdatingLocation()
+        case .notDetermined:
+            let requestUserLocationMessage = "Are you sure you want to share your location with Venues list app while app is running? (We won't store any data on server and will be used only for sole purpose of showing venues at current accurate location)"
+            let shareLocationAction = UIAlertAction(title: "Share location", style: .default) { action in
+                self.requestLocationPermission()
+                self.locationManager?.startUpdatingLocation()
+            }
+
+            let denyLocationAction = UIAlertAction(title: "No", style: .default) { [weak self] _ in
+                self?.view?.stopAnimating()
+            }
+
+            if let view = view {
+                alertDisplayUtility.showAlert(with: "Request Location", message: requestUserLocationMessage, actions: [denyLocationAction, shareLocationAction], parentController: view)
+            } else {
+                //TODO: Add Error handling
+            }
+        default:
+            self.retryEnabled = false
+            self.view?.displayError(with: "No location permission granted. Please enable location permission for Weather app from Settings menu", showRetryButton: self.retryEnabled)
+        }
+    }
+
+    private func requestLocationPermission() {
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        self.locationManager?.requestWhenInUseAuthorization()
     }
 
     func fetchVenues() {
 
-        // Prevent app from sending duplicate requests
-        guard radius != previousRadius else {
+        if case .undetermined = locationMode {
             return
         }
 
-        self.previousRadius = radius
+        if case .currentLocation = locationMode {
+            loadVenuesFromAPI()
+        } else {
+            fetchCurrentLocation()
+        }
+    }
 
-        requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, latitude: latitude, longitude: longitude)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
+    func loadVenuesFromAPI() {
+        // Prevent app from sending duplicate requests
+        guard radius != previousRadius || locationMode != previousLocationMode || retryEnabled else {
+            return
+        }
+
+        self.retryEnabled = false
+        self.view?.startAnimating()
+        self.previousRadius = radius
+        self.previousLocationMode = locationMode
+
+        requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, locationMode: locationMode)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
             guard let self = self else {
-                self?.view?.displayError(with: "Something went wrong. Please try again later")
+                self?.view?.displayError(with: "Something went wrong. Please try again later", showRetryButton: false)
                 return
             }
 
@@ -100,9 +148,17 @@ final class ListViewModel {
             case .success(let response):
                 self.view?.didFetchVenues(listScreenViewModel: self.getListScreenViewModel(from: response.results))
             case .failure(let dataLoadError):
-                self.view?.displayError(with: dataLoadError.errorMessageString())
+                self.retryEnabled = true
+                self.view?.displayError(with: dataLoadError.errorMessageString(), showRetryButton: self.retryEnabled)
             }
         }
+    }
+
+    func requestVenuesAtCurrentLocation() {
+        if case .undetermined = locationMode {
+            self.locationMode = .requestMade
+        }
+        self.fetchVenues()
     }
 
     func getListScreenViewModel(from venues: [Venue]) -> ListScreenViewModel {
@@ -130,5 +186,31 @@ final class ListViewModel {
         }
 
         return ListScreenViewModel(venues: venueViewModels)
+    }
+}
+
+extension ListViewModel: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let latestLocation = locations.last {
+            self.locationMode = .currentLocation(latitude: latestLocation.coordinate.latitude, longitude: latestLocation.coordinate.longitude)
+            self.loadVenuesFromAPI()
+        } else {
+            self.retryEnabled = false
+            view?.displayError(with: "Unable to get current location data. Please enable location access to this app or try again", showRetryButton: self.retryEnabled)
+        }
+    }
+}
+
+// Equatable protocol to compare location mode equality
+extension LocationMode: Equatable {
+    static func ==(lhs: LocationMode, rhs: LocationMode) -> Bool {
+        switch (lhs, rhs) {
+        case (.undetermined, .undetermined), (.requestMade, .requestMade):
+            return true
+        case let (.currentLocation(lhsLatitude, lhsLongitude), .currentLocation(rhsLatitude, rhsLongitude)):
+            return lhsLatitude == rhsLatitude && lhsLongitude == rhsLongitude
+        default:
+            return false
+        }
     }
 }

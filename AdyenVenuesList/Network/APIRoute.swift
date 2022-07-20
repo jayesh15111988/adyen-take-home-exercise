@@ -8,7 +8,10 @@
 import Foundation
 
 enum APIRoute {
-    case getVenuesList(radius: Int, latitude: Double, longitude: Double)
+
+    // Different cases for different endpoints.
+    // We can configure each with required parameters
+    case getVenuesList(radius: Int, locationMode: LocationMode)
 
     private var baseURLString: String { "https://api.foursquare.com/v3/" }
 
@@ -26,23 +29,26 @@ enum APIRoute {
     private var parameters: [URLQueryItem] {
 
         switch self {
-        case let .getVenuesList(radius, latitude, longitude):
+        case let .getVenuesList(radius, locationMode):
+            if case let .currentLocation(latitude, longitude) = locationMode {
+                let latitudeLongitudeParameter = String(latitude) + "," + String(longitude)
 
-            let latitudeLongitudeParameter = String(latitude) + "," + String(longitude)
+                var queryItems: [URLQueryItem] = []
 
-            var queryItems: [URLQueryItem] = []
+                queryItems.append(contentsOf: [
+                    URLQueryItem(name: "ll", value: latitudeLongitudeParameter),
+                    // Default limit to 50 items in the list
+                    URLQueryItem(name: "limit", value: String(50))
+                ])
 
-            queryItems.append(contentsOf: [
-                URLQueryItem(name: "ll", value: latitudeLongitudeParameter),
-                // Default limit to 50 items in the list
-                URLQueryItem(name: "limit", value: String(50))
-            ])
+                if radius != 0 {
+                    queryItems.append(URLQueryItem(name: "radius", value: String(radius)))
+                }
 
-            if radius != 0 {
-                queryItems.append(URLQueryItem(name: "radius", value: String(radius)))
+                return queryItems
+            } else {
+                fatalError("Unknown LocationMode case encountered. Stopping the execution.")
             }
-
-            return queryItems
         }
     }
 

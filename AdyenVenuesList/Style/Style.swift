@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// A style object to store all the style related things in the app
 enum Style {
     enum Fonts {
         static let regular = UIFont.systemFont(ofSize: 14)
