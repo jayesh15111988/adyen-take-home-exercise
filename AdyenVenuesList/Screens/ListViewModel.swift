@@ -58,6 +58,10 @@ final class ListViewModel: NSObject {
     private var previousRadius: Float = 0
     @Published var previousLocationMode: LocationMode = .undetermined
 
+    private var previousVenuesSortOrder: VenuesSortOrder = .relevance
+
+    private var venuesSortOrder: VenuesSortOrder = .relevance
+
     private enum Constants {
         static let distanceFilter: CGFloat = 100.0
     }
@@ -70,6 +74,15 @@ final class ListViewModel: NSObject {
         self.requestHandler = requestHandler
         self.alertDisplayUtility = alertDisplayUtility
         self.locationMode = .undetermined
+    }
+
+    func updateVenuesSortOrder(with sortIndex: Int) {
+        if let sortOrderType = VenuesSortOrder(rawValue: sortIndex) {
+            self.venuesSortOrder = sortOrderType
+            fetchVenues()
+        } else {
+            assertionFailure("Unable to convert raw index value into VenuesSortOrder enum type. Expected index within range 0, 1. Received \(sortIndex)")
+        }
     }
 
     private func fetchCurrentLocation() {
@@ -127,16 +140,23 @@ final class ListViewModel: NSObject {
         }
     }
 
+    private func shouldFireRequest() -> Bool {
+        if radius != previousRadius || locationMode != previousLocationMode || previousVenuesSortOrder != venuesSortOrder || retryEnabled {
+            return true
+        }
+        return false
+    }
+
     func loadVenuesFromAPI() {
         // Prevent app from sending duplicate requests
-        guard radius != previousRadius || locationMode != previousLocationMode || retryEnabled else {
+        guard shouldFireRequest() else {
             return
         }
 
         self.retryEnabled = false
         self.view?.startAnimating()
 
-        requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, locationMode: locationMode)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
+        requestHandler.request(route: .getVenuesList(radius: Int(radius) * 1000, locationMode: locationMode, sortOrder: venuesSortOrder)) { [weak self] (result: Result<VenuesList, DataLoadError>) -> Void in
             guard let self = self else {
                 self?.view?.displayError(with: "Something went wrong. Please try again later", showRetryButton: false)
                 return
@@ -146,6 +166,7 @@ final class ListViewModel: NSObject {
             case .success(let response):
                 self.previousRadius = self.radius
                 self.previousLocationMode = self.locationMode
+                self.previousVenuesSortOrder = self.venuesSortOrder
                 self.view?.didFetchVenues(listScreenViewModel: self.getListScreenViewModel(from: response.results))
             case .failure(let dataLoadError):
                 self.retryEnabled = true

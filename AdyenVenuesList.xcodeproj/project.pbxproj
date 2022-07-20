@@ -32,6 +32,7 @@
 		915C26A52888099A00802C30 /* venues.json in Resources */ = {isa = PBXBuildFile; fileRef = 915C26A42888099A00802C30 /* venues.json */; };
 		915C26A7288809B300802C30 /* JSONDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26A6288809B300802C30 /* JSONDataReader.swift */; };
 		915C26A928880C9B00802C30 /* MockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26A828880C9B00802C30 /* MockListViewController.swift */; };
+		915C26AB2888790600802C30 /* VenuesSortOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26AA2888790600802C30 /* VenuesSortOrderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		915C26A42888099A00802C30 /* venues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = venues.json; sourceTree = "<group>"; };
 		915C26A6288809B300802C30 /* JSONDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataReader.swift; sourceTree = "<group>"; };
 		915C26A828880C9B00802C30 /* MockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewController.swift; sourceTree = "<group>"; };
+		915C26AA2888790600802C30 /* VenuesSortOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesSortOrderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				915C2699288805B300802C30 /* APIRouteTests.swift */,
 				915C269B2888078100802C30 /* ListViewModelTests.swift */,
 				915C269D288807A100802C30 /* LocationModeTests.swift */,
+				915C26AA2888790600802C30 /* VenuesSortOrderTests.swift */,
 			);
 			path = AdyenVenuesListTests;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			files = (
 				915C26A02888092D00802C30 /* MockRequestHandling.swift in Sources */,
 				915C269E288807A100802C30 /* LocationModeTests.swift in Sources */,
+				915C26AB2888790600802C30 /* VenuesSortOrderTests.swift in Sources */,
 				915C26A7288809B300802C30 /* JSONDataReader.swift in Sources */,
 				915C269A288805B300802C30 /* APIRouteTests.swift in Sources */,
 				915C26A928880C9B00802C30 /* MockListViewController.swift in Sources */,

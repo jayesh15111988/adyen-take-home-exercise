@@ -14,12 +14,12 @@ final class APIRouteTests: XCTestCase {
     var apiRoute: APIRoute!
 
     override func setUp() {
-        apiRoute = .getVenuesList(radius: 100, locationMode: .currentLocation(latitude: 20.0, longitude: 37.89))
+        apiRoute = .getVenuesList(radius: 100, locationMode: .currentLocation(latitude: 20.0, longitude: 37.89), sortOrder: .relevance)
     }
 
     func testAPIRouteIsCorrectlyInitializedWithPassedParameters() {
         let request = apiRoute.asRequest()
-        XCTAssertEqual(request.url?.absoluteString, "https://api.foursquare.com/v3/places/search?ll=20.0,37.89&limit=50&radius=100")
+        XCTAssertEqual(request.url?.absoluteString, "https://api.foursquare.com/v3/places/search?ll=20.0,37.89&limit=50&sort=relevance&radius=100")
 
         let headerFields = request.allHTTPHeaderFields!
 

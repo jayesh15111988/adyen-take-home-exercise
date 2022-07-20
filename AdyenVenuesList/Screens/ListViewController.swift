@@ -81,6 +81,15 @@ final class ListViewController: UIViewController, ListViewable {
         return view
     }()
 
+    private let venuesSortOrderSegmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.insertSegment(withTitle: "Sort by Relevance", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Sort by Distance", at: 1, animated: false)
+        segmentedControl.selectedSegmentIndex = 0
+        return segmentedControl
+    }()
+
     private let viewModel: ListViewModel
     private let alertDisplayUtility: AlertDisplayable
     private var searchVenusAtCurrentLocationContainerHeightConstraint: NSLayoutConstraint?
@@ -103,6 +112,10 @@ final class ListViewController: UIViewController, ListViewable {
         layoutViews()
     }
 
+    @objc private func sortOrderChanged(segmentedControl: UISegmentedControl) {
+        viewModel.updateVenuesSortOrder(with: segmentedControl.selectedSegmentIndex)
+    }
+
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(sliderLabel)
@@ -111,6 +124,7 @@ final class ListViewController: UIViewController, ListViewable {
         view.addSubview(activityIndicatorView)
         view.addSubview(searchVenusAtCurrentLocationButtonContainer)
         searchVenusAtCurrentLocationButtonContainer.addSubview(searchVenusAtCurrentLocationButton)
+        view.addSubview(venuesSortOrderSegmentedControl)
 
         searchVenusAtCurrentLocationButtonContainer.clipsToBounds = true
 
@@ -138,6 +152,8 @@ final class ListViewController: UIViewController, ListViewable {
         } receiveValue: { [weak self] previousLocationMode, currentLocationMode in
             self?.toggleSearchVenuesAtCurrentLocationButtonVisibility(previousLocationMode != currentLocationMode || currentLocationMode == .undetermined)
         }.store(in: &cancellables)
+
+        venuesSortOrderSegmentedControl.addTarget(self, action: #selector(sortOrderChanged), for: .valueChanged)
     }
 
     @objc func searchVenuesAtCurrentLocation() {
@@ -159,9 +175,15 @@ final class ListViewController: UIViewController, ListViewable {
         ])
 
         NSLayoutConstraint.activate([
+            venuesSortOrderSegmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.horizontalPadding),
+            venuesSortOrderSegmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.horizontalPadding),
+            venuesSortOrderSegmentedControl.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalPadding),
+        ])
+
+        NSLayoutConstraint.activate([
             searchVenusAtCurrentLocationButtonContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchVenusAtCurrentLocationButtonContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            searchVenusAtCurrentLocationButtonContainer.topAnchor.constraint(equalTo: sliderControl.bottomAnchor, constant: Constants.verticalSpacing)
+            searchVenusAtCurrentLocationButtonContainer.topAnchor.constraint(equalTo: venuesSortOrderSegmentedControl.bottomAnchor, constant: Constants.verticalSpacing)
         ])
 
         searchVenusAtCurrentLocationContainerHeightConstraint = searchVenusAtCurrentLocationButtonContainer.heightAnchor.constraint(equalToConstant: 0)
