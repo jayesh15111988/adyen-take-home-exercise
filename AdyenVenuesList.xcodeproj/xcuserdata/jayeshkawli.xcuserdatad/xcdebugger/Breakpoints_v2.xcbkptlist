@@ -87,80 +87,222 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E7691A4A-2963-4B0D-80A0-9EBF222C586B"
+            uuid = "DED06349-9CBD-4EB1-82D6-945B2007DFE1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AdyenVenuesList/Screens/ListViewModel.swift"
+            filePath = "AdyenVenuesListTests/APIRouteTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "loadVenuesFromAPI()"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "testAPIRouteIsCorrectlyInitializedWithPassedParameters()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DED06349-9CBD-4EB1-82D6-945B2007DFE1 - b9839e92b88fde60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdyenVenuesListTests.APIRouteTests.testAPIRouteIsCorrectlyInitializedWithURL() -&gt; ()"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/APIRouteTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "DED06349-9CBD-4EB1-82D6-945B2007DFE1 - 30e391635dcc4aa6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AdyenVenuesListTests.APIRouteTests.testAPIRouteIsCorrectlyInitializedWithPassedParameters() -&gt; ()"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/APIRouteTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "480">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "066D1DFA-4670-49A5-8C0F-122C6A99EB5F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdyenVenuesListTests/LocationModeTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "testThatLocationModePassedEqualityCheck()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CAB80E50-5DF8-4EB5-84AB-E6073D1F9E8B"
+            uuid = "553A6681-54F4-485A-B802-A76388510AE4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AdyenVenuesList/Network/APIRoute.swift"
+            filePath = "AdyenVenuesListTests/ListViewModelTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "asRequest()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "testThatViewModelCorrectlySetsTheStateWhenTheRequestSucceeds()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F1704DA3-29FA-4927-99EF-7E12297DF2F8"
+            uuid = "F70CA857-99BE-47C5-AC55-B2F396FED25D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AdyenVenuesList/Network/APIRoute.swift"
+            filePath = "AdyenVenuesListTests/Utilities/JSONDataReader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "parameters"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "47C322C6-763B-4064-ACED-6C7F0239E4A7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AdyenVenuesList/Screens/ListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "setupViews()"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "getModelFromJSONFile(with:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F70CA857-99BE-47C5-AC55-B2F396FED25D - e35bf14ac96756d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "1458">
+               </Location>
+               <Location
+                  uuid = "F70CA857-99BE-47C5-AC55-B2F396FED25D - e35bf14ac96756d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "1591">
+               </Location>
+               <Location
+                  uuid = "F70CA857-99BE-47C5-AC55-B2F396FED25D - e35bf14ac96756d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "1732">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F8253FDC-0FA7-46D5-9C80-53B558B9FE15"
+            uuid = "3CB9B684-F68D-482A-BF63-5EC1C50F36FC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AdyenVenuesList/Screens/ListViewModel.swift"
+            filePath = "AdyenVenuesListTests/Utilities/JSONDataReader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "loadVenuesFromAPI()"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "getModelFromJSONFile(with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CB9B684-F68D-482A-BF63-5EC1C50F36FC - e35bf14ac967574b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1387">
+               </Location>
+               <Location
+                  uuid = "3CB9B684-F68D-482A-BF63-5EC1C50F36FC - e35bf14ac967574b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1520">
+               </Location>
+               <Location
+                  uuid = "3CB9B684-F68D-482A-BF63-5EC1C50F36FC - e35bf14ac967574b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static AdyenVenuesListTests.JSONDataReader.getModelFromJSONFile&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String) -&gt; Swift.Optional&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "AdyenVenuesListTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jayeshkawli/Desktop/AdyenVenuesList/AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "1661">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A17B4A80-268F-4D20-9FE8-A3FD44721839"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AdyenVenuesListTests/Utilities/JSONDataReader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getModelFromJSONFile(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

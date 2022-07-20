@@ -1,0 +1,553 @@
+{
+  "results": [
+    {
+      "fsq_id": "4ac2db05f964a520e19a20e3",
+      "categories": [
+        {
+          "id": 17069,
+          "name": "Grocery Store / Supermarket",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [
+        {
+          "id": "efa57561-fb6e-4f2a-810a-e376a2f01c07",
+          "name": "Nijiya Market"
+        }
+      ],
+      "distance": 1307,
+      "geocodes": {
+        "main": {
+          "latitude": 32.814175,
+          "longitude": -117.15399
+        },
+        "roof": {
+          "latitude": 32.814175,
+          "longitude": -117.15399
+        }
+      },
+      "link": "/v3/places/4ac2db05f964a520e19a20e3",
+      "location": {
+        "address": "3860 Convoy St",
+        "address_extended": "Ste 109",
+        "census_block": "060730085112035",
+        "country": "US",
+        "dma": "San Diego",
+        "formatted_address": "3860 Convoy St, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Clairemont Mesa East"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Nijiya Market",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "4a7e3c01f964a52085f11fe3",
+      "categories": [
+        {
+          "id": 13026,
+          "name": "BBQ Joint",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/bbqalt_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13276,
+          "name": "Sushi Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/sushi_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13289,
+          "name": "Korean Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/korean_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1287,
+      "geocodes": {
+        "main": {
+          "latitude": 32.814536,
+          "longitude": -117.154626
+        },
+        "roof": {
+          "latitude": 32.814536,
+          "longitude": -117.154626
+        }
+      },
+      "link": "/v3/places/4a7e3c01f964a52085f11fe3",
+      "location": {
+        "address": "3904 Convoy St",
+        "address_extended": "Ste 106",
+        "census_block": "060730085112035",
+        "country": "US",
+        "dma": "San Diego",
+        "formatted_address": "3904 Convoy St, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Clairemont Mesa East"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Tsuruhashi",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "59ceeecfd1a4022c645013be",
+      "categories": [
+        {
+          "id": 13055,
+          "name": "Fried Chicken Joint",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/friedchicken_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13072,
+          "name": "Asian Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13289,
+          "name": "Korean Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/korean_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1726,
+      "geocodes": {
+        "main": {
+          "latitude": 32.820439,
+          "longitude": -117.154606
+        },
+        "roof": {
+          "latitude": 32.820439,
+          "longitude": -117.154606
+        }
+      },
+      "link": "/v3/places/59ceeecfd1a4022c645013be",
+      "location": {
+        "address": "4403 Convoy St",
+        "census_block": "060730085112042",
+        "country": "US",
+        "cross_street": "",
+        "dma": "San Diego",
+        "formatted_address": "4403 Convoy St, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Clairemont Mesa East"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Cross Street Chicken and Beer",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "4a70c520f964a52060d81fe3",
+      "categories": [
+        {
+          "id": 13145,
+          "name": "Fast Food Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/fastfood_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13031,
+          "name": "Burger Joint",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/burger_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [
+        {
+          "id": "bc635867-86af-4d4d-9dfd-e7b17779fe0c",
+          "name": "In-N-Out Burger"
+        }
+      ],
+      "distance": 2041,
+      "geocodes": {
+        "main": {
+          "latitude": 32.819583,
+          "longitude": -117.148762
+        },
+        "roof": {
+          "latitude": 32.819583,
+          "longitude": -117.148762
+        }
+      },
+      "link": "/v3/places/4a70c520f964a52060d81fe3",
+      "location": {
+        "address": "4375 Kearny Mesa Rd",
+        "census_block": "060730085112041",
+        "country": "US",
+        "dma": "San Diego",
+        "formatted_address": "4375 Kearny Mesa Rd, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Eastern San Diego"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "In-N-Out Burger",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "52800c3d11d2a6324374ddaa",
+      "categories": [
+        {
+          "id": 17057,
+          "name": "Food and Beverage Retail",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/foodanddrink_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1985,
+      "geocodes": {
+        "main": {
+          "latitude": 32.820631,
+          "longitude": -117.178937
+        },
+        "roof": {
+          "latitude": 32.820631,
+          "longitude": -117.178937
+        }
+      },
+      "link": "/v3/places/52800c3d11d2a6324374ddaa",
+      "location": {
+        "address": "5650 Balboa Ave",
+        "address_extended": "Ste 104",
+        "census_block": "060730085074001",
+        "country": "US",
+        "cross_street": "",
+        "dma": "San Diego",
+        "formatted_address": "5650 Balboa Ave, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Clairemont"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Yogurtland",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "4e7d40af0aaf925e534b1394",
+      "categories": [
+        {
+          "id": 13031,
+          "name": "Burger Joint",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/burger_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13272,
+          "name": "Ramen Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/ramen_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13303,
+          "name": "Mexican Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1984,
+      "geocodes": {
+        "main": {
+          "latitude": 32.821553,
+          "longitude": -117.152154
+        },
+        "roof": {
+          "latitude": 32.821553,
+          "longitude": -117.152154
+        }
+      },
+      "link": "/v3/places/4e7d40af0aaf925e534b1394",
+      "location": {
+        "address": "7947 Balboa Ave",
+        "census_block": "060730085112042",
+        "country": "US",
+        "cross_street": "at Convoy St",
+        "dma": "San Diego",
+        "formatted_address": "7947 Balboa Ave (at Convoy St), San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Eastern San Diego"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Hinotez",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "5a0a3c608194fc705289df98",
+      "categories": [
+        {
+          "id": 13046,
+          "name": "Ice Cream Parlor",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/icecream_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13289,
+          "name": "Korean Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/korean_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 2107,
+      "geocodes": {
+        "main": {
+          "latitude": 32.824406,
+          "longitude": -117.155695
+        },
+        "roof": {
+          "latitude": 32.824406,
+          "longitude": -117.155695
+        }
+      },
+      "link": "/v3/places/5a0a3c608194fc705289df98",
+      "location": {
+        "address": "4620 Convoy St",
+        "census_block": "060730085112032",
+        "country": "US",
+        "cross_street": "",
+        "dma": "San Diego",
+        "formatted_address": "4620 Convoy St, San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Eastern San Diego"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "SomiSomi",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "4f35ab6ae4b0156e8593c1cd",
+      "categories": [
+        {
+          "id": 13003,
+          "name": "Bar",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13029,
+          "name": "Brewery",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/brewery_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13065,
+          "name": "Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 3432,
+      "geocodes": {
+        "main": {
+          "latitude": 32.833934,
+          "longitude": -117.146282
+        },
+        "roof": {
+          "latitude": 32.833934,
+          "longitude": -117.146282
+        }
+      },
+      "link": "/v3/places/4f35ab6ae4b0156e8593c1cd",
+      "location": {
+        "address": "8262 Clairemont Mesa Blvd",
+        "census_block": "060730085112003",
+        "country": "US",
+        "cross_street": "at Industrial Park Dr",
+        "dma": "San Diego",
+        "formatted_address": "8262 Clairemont Mesa Blvd (at Industrial Park Dr), San Diego, CA 92111",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Eastern San Diego"
+        ],
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "Societe Brewing",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "462386d4f964a520a4451fe3",
+      "categories": [
+        {
+          "id": 17117,
+          "name": "Sporting Goods Retail",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/sports_outdoors_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [
+        {
+          "id": "d9c82667-da15-475a-a4d4-83df5ab92577",
+          "name": "REI"
+        }
+      ],
+      "distance": 3498,
+      "geocodes": {
+        "main": {
+          "latitude": 32.838599,
+          "longitude": -117.16306
+        },
+        "roof": {
+          "latitude": 32.838599,
+          "longitude": -117.16306
+        }
+      },
+      "link": "/v3/places/462386d4f964a520a4451fe3",
+      "location": {
+        "address": "5556 Copley Dr",
+        "address_extended": "Kearny Mesa",
+        "census_block": "060730085112010",
+        "country": "US",
+        "dma": "San Diego",
+        "formatted_address": "5556 Copley Dr, San Diego, CA 92111",
+        "locality": "San Diego",
+        "postcode": "92111",
+        "region": "CA"
+      },
+      "name": "REI",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "fsq_id": "4ba000b5f964a520705137e3",
+      "categories": [
+        {
+          "id": 13095,
+          "name": "Cajun / Creole Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cajun_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13338,
+          "name": "Seafood Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/seafood_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13343,
+          "name": "South American Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/argentinian_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 4043,
+      "geocodes": {
+        "main": {
+          "latitude": 32.820948,
+          "longitude": -117.124723
+        },
+        "roof": {
+          "latitude": 32.820948,
+          "longitude": -117.124723
+        }
+      },
+      "link": "/v3/places/4ba000b5f964a520705137e3",
+      "location": {
+        "address": "4320 Viewridge Ave",
+        "address_extended": "Ste A",
+        "census_block": "060730085113003",
+        "country": "US",
+        "dma": "San Diego",
+        "formatted_address": "4320 Viewridge Ave, San Diego, CA 92123",
+        "locality": "San Diego",
+        "neighborhood": [
+          "Eastern San Diego"
+        ],
+        "postcode": "92123",
+        "region": "CA"
+      },
+      "name": "Bud's Louisiana Cafe",
+      "related_places": {},
+      "timezone": "America/Los_Angeles"
+    }
+  ],
+  "context": {
+    "geo_bounds": {
+      "circle": {
+        "center": {
+          "latitude": 32.80720520019531,
+          "longitude": -117.16490173339844
+        },
+        "radius": 22000
+      }
+    }
+  }
+}

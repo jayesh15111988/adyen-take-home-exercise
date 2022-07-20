@@ -26,6 +26,14 @@
 		910E72522885C3380087B613 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72512885C3380087B613 /* ListCell.swift */; };
 		910E72562885C5070087B613 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72552885C5070087B613 /* ReusableView.swift */; };
 		910E72592885DF9D0087B613 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E72582885DF9D0087B613 /* Style.swift */; };
+		915C26982888058400802C30 /* DataLoadErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26972888058400802C30 /* DataLoadErrorTests.swift */; };
+		915C269A288805B300802C30 /* APIRouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C2699288805B300802C30 /* APIRouteTests.swift */; };
+		915C269C2888078100802C30 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C269B2888078100802C30 /* ListViewModelTests.swift */; };
+		915C269E288807A100802C30 /* LocationModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C269D288807A100802C30 /* LocationModeTests.swift */; };
+		915C26A02888092D00802C30 /* MockRequestHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C269F2888092D00802C30 /* MockRequestHandling.swift */; };
+		915C26A52888099A00802C30 /* venues.json in Resources */ = {isa = PBXBuildFile; fileRef = 915C26A42888099A00802C30 /* venues.json */; };
+		915C26A7288809B300802C30 /* JSONDataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26A6288809B300802C30 /* JSONDataReader.swift */; };
+		915C26A928880C9B00802C30 /* MockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C26A828880C9B00802C30 /* MockListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +77,14 @@
 		910E72512885C3380087B613 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		910E72552885C5070087B613 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		910E72582885DF9D0087B613 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		915C26972888058400802C30 /* DataLoadErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadErrorTests.swift; sourceTree = "<group>"; };
+		915C2699288805B300802C30 /* APIRouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouteTests.swift; sourceTree = "<group>"; };
+		915C269B2888078100802C30 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		915C269D288807A100802C30 /* LocationModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModeTests.swift; sourceTree = "<group>"; };
+		915C269F2888092D00802C30 /* MockRequestHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequestHandling.swift; sourceTree = "<group>"; };
+		915C26A42888099A00802C30 /* venues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = venues.json; sourceTree = "<group>"; };
+		915C26A6288809B300802C30 /* JSONDataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDataReader.swift; sourceTree = "<group>"; };
+		915C26A828880C9B00802C30 /* MockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +156,14 @@
 		910E72252885B3B60087B613 /* AdyenVenuesListTests */ = {
 			isa = PBXGroup;
 			children = (
+				915C26A32888098500802C30 /* Utilities */,
+				915C26A22888093800802C30 /* JSONs */,
+				915C26A12888093200802C30 /* Mocks */,
 				910E72262885B3B60087B613 /* AdyenVenuesListTests.swift */,
+				915C26972888058400802C30 /* DataLoadErrorTests.swift */,
+				915C2699288805B300802C30 /* APIRouteTests.swift */,
+				915C269B2888078100802C30 /* ListViewModelTests.swift */,
+				915C269D288807A100802C30 /* LocationModeTests.swift */,
 			);
 			path = AdyenVenuesListTests;
 			sourceTree = "<group>";
@@ -211,6 +234,31 @@
 				910E72582885DF9D0087B613 /* Style.swift */,
 			);
 			path = Style;
+			sourceTree = "<group>";
+		};
+		915C26A12888093200802C30 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				915C269F2888092D00802C30 /* MockRequestHandling.swift */,
+				915C26A828880C9B00802C30 /* MockListViewController.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		915C26A22888093800802C30 /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				915C26A42888099A00802C30 /* venues.json */,
+			);
+			path = JSONs;
+			sourceTree = "<group>";
+		};
+		915C26A32888098500802C30 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				915C26A6288809B300802C30 /* JSONDataReader.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				915C26A52888099A00802C30 /* venues.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +413,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				915C26A02888092D00802C30 /* MockRequestHandling.swift in Sources */,
+				915C269E288807A100802C30 /* LocationModeTests.swift in Sources */,
+				915C26A7288809B300802C30 /* JSONDataReader.swift in Sources */,
+				915C269A288805B300802C30 /* APIRouteTests.swift in Sources */,
+				915C26A928880C9B00802C30 /* MockListViewController.swift in Sources */,
+				915C26982888058400802C30 /* DataLoadErrorTests.swift in Sources */,
+				915C269C2888078100802C30 /* ListViewModelTests.swift in Sources */,
 				910E72272885B3B60087B613 /* AdyenVenuesListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

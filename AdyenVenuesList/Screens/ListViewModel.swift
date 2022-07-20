@@ -101,7 +101,7 @@ final class ListViewModel: NSObject {
             if let view = view {
                 alertDisplayUtility.showAlert(with: "Request Location", message: requestUserLocationMessage, actions: [denyLocationAction, shareLocationAction], parentController: view)
             } else {
-                //TODO: Add Error handling
+                view?.displayError(with: "Something went wrong. Please try again later", showRetryButton: false)
             }
         default:
             self.retryEnabled = false
