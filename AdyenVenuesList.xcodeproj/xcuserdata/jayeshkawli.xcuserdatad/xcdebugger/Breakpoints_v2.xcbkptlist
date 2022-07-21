@@ -316,8 +316,8 @@
             filePath = "AdyenVenuesList/Screens/ListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "toggleSearchVenuesAtCurrentLocationButtonVisibility(_:)"
             landmarkType = "7">
          </BreakpointContent>

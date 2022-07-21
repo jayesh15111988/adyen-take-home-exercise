@@ -199,6 +199,8 @@ final class ListViewController: UIViewController, ListViewable {
             searchVenusAtCurrentLocationButton.bottomAnchor.constraint(equalTo: searchVenusAtCurrentLocationButtonContainer.bottomAnchor, constant: -Constants.verticalPadding),
         ]
 
+        // To be able to reduce length of searchVenusAtCurrentLocationButtonContainer to zero
+        // When there is no need to re-trigger the venues list request to the API
         verticalPaddingConstraints.forEach {
             $0.priority = .defaultLow
         }
@@ -250,7 +252,6 @@ final class ListViewController: UIViewController, ListViewable {
                 reloadDataAction = nil
             }
 
-
             let ignoreAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
 
             self.alertDisplayUtility.showAlert(with: "Error", message: message, actions: [ignoreAction, reloadDataAction].compactMap { $0 }, parentController: self)
@@ -296,7 +297,7 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
 
-    func getCell(from tableView: UITableView, indexPath: IndexPath) -> ListCell {
+    private func getCell(from tableView: UITableView, indexPath: IndexPath) -> ListCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.reuseIdentifier, for: indexPath) as? ListCell else {
             fatalError("Failed to get expected kind of reusable cell from the tableView. Expected cell of type `ListCell`")
         }

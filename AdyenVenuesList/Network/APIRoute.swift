@@ -63,7 +63,7 @@ enum APIRoute {
 
                 return queryItems
             } else {
-                fatalError("Unknown LocationMode case encountered. Stopping the execution.")
+                preconditionFailure("Unknown LocationMode case encountered. We should never have arrived in this state. Stopping the execution.")
             }
         }
     }
@@ -82,6 +82,7 @@ enum APIRoute {
 
         var request = URLRequest(url: parametrizedURL)
 
+        // Common values for all requests
         request.setValue(AuthenticationParameters.apiKey, forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
