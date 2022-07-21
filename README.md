@@ -21,7 +21,8 @@ This screen has multiple functionalities,
 1. User can tap on "Search venues at current location" button to trigger venues search at user's current location
 2. User can vary the radius to control how far they want to search places
 3. User can also control whether they want to sort the list by relevance or the distance from their current location (Both lists are sorted in the descending order)
-4. "Search venues at current location" button will disappear after firing the first request. In case any of the input parameters change (radius, sort preference, or location), the request will fire automatically to update search results
+4. User can also click on "Show full address" button to see the popup with venue's full address details
+5. "Search venues at current location" button will disappear after firing the first request. In case any of the input parameters change (radius, sort preference, or location), the request will fire automatically to update search results
 
 
 ## Architecture
