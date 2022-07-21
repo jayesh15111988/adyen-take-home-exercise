@@ -147,10 +147,10 @@ final class ListViewController: UIViewController, ListViewable {
         tableView.register(ListCell.self, forCellReuseIdentifier: ListCell.reuseIdentifier)
 
         // Toggle visibility of button responsible for showing venues at the current location
-        viewModel.$previousLocationMode.combineLatest(viewModel.$locationMode).receive(on: DispatchQueue.main).sink { _ in
+        viewModel.$locationMode.receive(on: DispatchQueue.main).sink { _ in
             //no-op
-        } receiveValue: { [weak self] previousLocationMode, currentLocationMode in
-            self?.toggleSearchVenuesAtCurrentLocationButtonVisibility(previousLocationMode != currentLocationMode || currentLocationMode == .undetermined)
+        } receiveValue: { [weak self] currentLocationMode in
+            self?.toggleSearchVenuesAtCurrentLocationButtonVisibility(currentLocationMode == .undetermined)
         }.store(in: &cancellables)
 
         venuesSortOrderSegmentedControl.addTarget(self, action: #selector(sortOrderChanged), for: .valueChanged)
