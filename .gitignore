@@ -20,6 +20,3 @@ DerivedData
 .DS_Store
 default.profraw
 .secrets
-
-# CocoaPods
-Pods/
